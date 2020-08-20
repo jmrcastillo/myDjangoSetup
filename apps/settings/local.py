@@ -8,6 +8,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'yf_xdu7kg@bnnk-4)f23=nx!cx2(=o!&7z^_6#t13l0yezxbe6'
+
+INSTALLED_APPS += [
+    'django_extensions',
+]
+
 # DATABASES = {
     # 'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
