@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -34,7 +36,34 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # 3rd party
+    # django-allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 ]
+
+# ALLAUTH SETTINGS
+SITE_ID = 1
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of allauth
+    'django.contrib.auth.backends.ModelBackend',
+
+    # 'allauth' specific authentication methods, sudch as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+
+]
+
+EMAIL_BACKEND = 'django.core.mail.backend.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = '/admin/'
+# LOGIN_URL = reverse_lazy('admin')
+# LOGOUT_REDIRECT_URL = reverse_lazy('admin')
+LOGOUT_REDIRECT_URL = '/admin/'
+
+# End allauth settings
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
